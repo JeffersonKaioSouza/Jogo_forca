@@ -4,6 +4,7 @@ Jogo da forca
 
 secreto = 'perfume'
 digitadas = []
+chances = 5
 print('=' * 20)
 print('Usado por homens e mulheres, existem caros e baratos,\n'
       'alguns são doces outros nem tanto, alguns são cheirosos outros não!!\n'
@@ -11,6 +12,10 @@ print('Usado por homens e mulheres, existem caros e baratos,\n'
 print('=' * 20)
 
 while True:
+    if chances <= 0:
+        print('Você perdeu!!!')
+        break
+
     letra = input('Digite uma letra: ').strip().lower()
 
     if len(letra) > 1:
@@ -37,3 +42,8 @@ while True:
         break
     else:
         print(f'A palavra secreta está assim: {secreto_temporario}')
+
+    if letra not in secreto:
+        chances -= 1
+
+    print(f'Você ainda tem {chances} chances.')
